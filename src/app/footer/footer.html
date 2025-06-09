@@ -1,0 +1,47 @@
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Contact Information -->
+      <div class="col-md-6 mb-4">
+        <h3 class="mb-4">Contact Me</h3>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <i class="fas fa-envelope me-2"></i>
+            <a href="mailto:{{email}}" class="text-white">{{email}}</a>
+          </li>
+          <li class="mb-3">
+            <i class="fas fa-phone me-2"></i>
+            <a href="tel:{{phone}}" class="text-white">{{phone}}</a>
+          </li>
+          <li class="mb-3">
+            <i class="fas fa-phone me-2"></i>
+            <a href="tel:{{git}}" class="text-white">{{git}}</a>
+          </li>
+          <li class="mb-3">
+            <i class="fas fa-phone me-2"></i>
+            <a href="tel:{{linked}}" class="text-white">{{linked}}</a>
+          </li>
+          <li class="mb-3">
+            <i class="fas fa-map-marker-alt me-2"></i>
+            <span>Giza - Egypt</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="col-md-6 mb-4">
+        <div class="social-links">
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.url" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-outline-light btn-social mx-1"
+             [title]="social.name">
+            <i [class]="social.icon"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>

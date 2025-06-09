@@ -1,0 +1,14 @@
+<div class="users-container">
+  @for (user of users; track user.email) {
+    <div class="user-card">
+      <div class="user-info">
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.email }}</p>
+        <p>{{ user.phone }}</p>
+      </div>
+      <div class="verification" [style.color]="user.verified ? 'green' : 'red'">
+        {{ user.verified ? 'Verified' : 'Not Verified' }}
+      </div>
+    </div>
+  }
+</div>
