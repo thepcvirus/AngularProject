@@ -56,10 +56,18 @@ export class Carousel implements OnInit, OnDestroy {
     if(index == this.activeIndex)
       this.ChangeImage(-1);
     this.items.splice(index, 1);
+    this.ChangeImage(0);
   }
 
   ChangeImage(val: number){
+    if(this.items.length == 0)
+    {
+      this.activeIndex = 0;
+      return;
+    }
     this.activeIndex = (this.activeIndex + val)%this.items.length;
+    if(this.activeIndex < 0 && this.items.length > 1)
+      this.activeIndex = this.items.length -1;
   }
 
   AddRandomSlide() {
@@ -69,5 +77,6 @@ export class Carousel implements OnInit, OnDestroy {
       description: 'This slide was added dynamically!'
     };
     this.items.push(newItem);
+    this.ChangeImage(0);
   }
 }

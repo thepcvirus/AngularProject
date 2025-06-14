@@ -1,25 +1,28 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CarouselItem } from '../../componenets/carousel/carousel';
+import { CardItem } from '../../componenets/card/card';
+
 
 
 @Component({
-  selector: 'app-carousel-form',
+  selector: 'app-card-form',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './carousel-form.html',
-  styleUrls: ['./carousel-form.css']
+  templateUrl: './card-form.html',
+  styleUrl: './card-form.css'
 })
-export class CarouselForm {
-  @Output() AddItem = new EventEmitter<CarouselItem>();
+
+export class CardForm {
+  @Output() AddItem = new EventEmitter<CardItem>();
   @Output() RemoveItem = new EventEmitter<number>();
   
-  @Input() submittedItems: CarouselItem[] = [];
-  newItem: CarouselItem = {
+  @Input() submittedItems: CardItem[] = [];
+  newItem: CardItem = {
     imageUrl: '',
     title: '',
-    description: ''
+    description: '',
+    url: ''
   };
 
   submitForm() {
@@ -34,7 +37,8 @@ export class CarouselForm {
     this.newItem = {
       imageUrl: '',
       title: '',
-      description: ''
+      description: '',
+      url:''
     };
   }
 

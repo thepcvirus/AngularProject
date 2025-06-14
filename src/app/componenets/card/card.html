@@ -1,1 +1,11 @@
-<p>card works!</p>
+<div class="row">
+<div class="card col-4" *ngFor="let item of items; let i = index">
+  <img [src]="item.imageUrl" class="card-img-top" [alt]="i">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.title }}</h5>
+    <p class="card-text">{{ item.description }}</p>
+    <a href="{{item.url}}" target="_blank" class="btn btn-primary">Check it out</a>
+  </div>
+</div>  
+</div>
+<app-card-form [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"/>
