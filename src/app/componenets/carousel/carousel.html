@@ -1,0 +1,24 @@
+<button (click)="AddRandomSlide()" class="btn btn-primary mb-3">Add New Slide</button>
+
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-inner">
+    <div *ngFor="let item of items; let i = index"
+         class="carousel-item" [class.active]="activeIndex === i" >
+      <img [src]="item.imageUrl" class="d-block w-100" [alt]="i">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ item.title }}</h5>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" (click)="ChangeImage(-1)" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" (click)="ChangeImage(1)" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<app-carousel-form [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-carousel-form>

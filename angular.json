@@ -3,13 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngLabLab1": {
+    "WebsiteBuilder": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          // "inlineTemplate": true,
-          // "inlineStyle": true,
-          "style": "scss"
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -24,7 +28,6 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -32,8 +35,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
-            ]
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
           },
           "configurations": {
             "production": {
@@ -63,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "AngLabLab1:build:production"
+              "buildTarget": "WebsiteBuilder:build:production"
             },
             "development": {
-              "buildTarget": "AngLabLab1:build:development"
+              "buildTarget": "WebsiteBuilder:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +87,6 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -90,7 +94,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ]
           }
         }
