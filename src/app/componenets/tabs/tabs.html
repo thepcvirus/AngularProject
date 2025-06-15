@@ -1,0 +1,34 @@
+<div class="d-flex align-items-start" *ngIf="items.length > 0">
+  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <button 
+      *ngFor="let item of items; let i = index" 
+      class="nav-link" 
+      [class.active]="activeIndex === i"
+      [id]="'v-pills-' + i + '-tab'"
+      data-bs-toggle="pill" 
+      [attr.data-bs-target]="'#v-pills-' + i" 
+      type="button" 
+      role="tab" 
+      [attr.aria-controls]="'v-pills-' + i"
+      [attr.aria-selected]="activeIndex === i"
+      (click)="activeIndex = i">
+      {{item.title}}
+    </button>
+  </div>
+  
+  <div class="tab-content" id="v-pills-tabContent">
+    <div 
+      *ngFor="let item of items; let i = index" 
+      class="tab-pane fade" 
+      [class.active]="activeIndex === i" 
+      [class.show]="activeIndex === i" 
+      [id]="'v-pills-' + i" 
+      role="tabpanel" 
+      [attr.aria-labelledby]="'v-pills-' + i + '-tab'" 
+      tabindex="0">
+      {{item.description}}
+    </div>
+  </div>
+</div>
+
+<app-tabs-form [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-tabs-form>

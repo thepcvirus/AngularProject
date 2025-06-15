@@ -7,19 +7,22 @@ import { Carousel } from './componenets/carousel/carousel';
 import { Card } from './componenets/card/card';
 import { CarouselForm } from './forms/carousel-form/carousel-form';
 import { CardForm } from './forms/card-form/card-form';
+import { Tabs } from './componenets/tabs/tabs';
+import { TabsForm } from './forms/tabs-form/tabs-form';
 
 @NgModule({
   declarations: [
     App,
     Carousel,
     Card,
-    
+    Tabs
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CarouselForm,
-    CardForm
+    CardForm,
+    TabsForm
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
