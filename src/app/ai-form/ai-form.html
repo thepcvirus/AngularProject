@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>AI Article Generator</h1>
+  
+  <form (ngSubmit)="onSubmit()" #aiForm="ngForm">
+    <div class="form-group">
+      <label for="topic">Enter a topic for your article:</label>
+      <textarea 
+        id="topic" 
+        name="topic" 
+        [(ngModel)]="topic" 
+        class="form-control" 
+        placeholder="E.g., 'Quantum Computing' or 'Renewable Energy'" 
+        required
+      ></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+      {{ isLoading ? 'Generating...' : 'Generate Article' }}
+    </button>
+  </form>
+
+  <div *ngIf="isLoading" class="loading">
+    <div class="spinner"></div>
+    <p>Generating your article...</p>
+  </div>
+
+  <div *ngIf="showResponse" class="ai-response">
+    <h2>Your Generated Article</h2>
+    <div class="response-content" [innerHTML]="aiResponse"></div>
+  </div>
+</div>

@@ -15,12 +15,14 @@ export class TabsForm {
   @Output() RemoveItem = new EventEmitter<number>();
   
   @Input() submittedItems: TabItem[] = [];
+  itemsArray = [...this.submittedItems]
   newItem: TabItem = {
     title: '',
     description: ''
   };
 
   submitForm() {
+    this.itemsArray=[...this.itemsArray]
     if (this.newItem.description && this.newItem.title) {
       this.AddItem.emit({...this.newItem});
       //this.submittedItems.push({...this.newItem});
@@ -45,9 +47,11 @@ export class TabsForm {
   }
 
   loadFormData() {
+    
     const savedData = localStorage.getItem('TabsData');
     if (savedData) {
       this.submittedItems = JSON.parse(savedData);
     }
+    
   }
 }

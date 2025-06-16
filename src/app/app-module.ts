@@ -13,6 +13,7 @@ import { MainBody } from './main-body/main-body';
 import { MainDescription } from './componenets/main-description/main-description';
 import { MainDescriptionForm } from './forms/main-description-form/main-description-form';
 import { MainSettings } from './main-settings/main-settings';
+import { AiFormComponent } from './ai-form/ai-form';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { MainSettings } from './main-settings/main-settings';
     Tabs,
     MainDescription,
      MainBody,
-     
   ],
   imports: [
     BrowserModule,
@@ -32,6 +32,7 @@ import { MainSettings } from './main-settings/main-settings';
     TabsForm,
     MainDescriptionForm,
    MainSettings,
+   AiFormComponent
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

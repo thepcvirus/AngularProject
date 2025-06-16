@@ -32,6 +32,10 @@ activeIndex: number = 0;
   AddSlide(newItem: TabItem){
       this.items.push(newItem);
       this.ChangeTab(0);
+      console.log(newItem);
+      console.log(this.items);
+      
+      
     }
   
     RemoveSlide(index: number) {
