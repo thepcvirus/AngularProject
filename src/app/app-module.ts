@@ -9,20 +9,29 @@ import { CarouselForm } from './forms/carousel-form/carousel-form';
 import { CardForm } from './forms/card-form/card-form';
 import { Tabs } from './componenets/tabs/tabs';
 import { TabsForm } from './forms/tabs-form/tabs-form';
+import { MainBody } from './main-body/main-body';
+import { MainDescription } from './componenets/main-description/main-description';
+import { MainDescriptionForm } from './forms/main-description-form/main-description-form';
+import { MainSettings } from './main-settings/main-settings';
 
 @NgModule({
   declarations: [
     App,
     Carousel,
     Card,
-    Tabs
+    Tabs,
+    MainDescription,
+     MainBody,
+     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CarouselForm,
     CardForm,
-    TabsForm
+    TabsForm,
+    MainDescriptionForm,
+   MainSettings,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

@@ -15,6 +15,7 @@ export interface CarouselItem {
   styleUrl: './carousel.css'
 })
 export class Carousel implements OnInit, OnDestroy {
+  @Input() isFormEnabled: boolean = true;
   activeIndex: number = 0;
   items: CarouselItem[] = [
     {

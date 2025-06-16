@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface CardItem {
   imageUrl: string;
@@ -14,6 +14,7 @@ export interface CardItem {
   styleUrl: './card.css'
 })
 export class Card {
+  @Input() isFormEnabled: boolean = true;
     items: CardItem[] = [
       {
         imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',

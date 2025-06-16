@@ -31,4 +31,4 @@
   </div>
 </div>
 
-<app-tabs-form [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-tabs-form>
+<app-tabs-form *ngIf="isFormEnabled" [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-tabs-form>

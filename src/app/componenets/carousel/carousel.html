@@ -21,4 +21,4 @@
   </button>
 </div>
 <button (click)="AddRandomSlide()" class="btn btn-primary mb-3">Add Random Slide</button>
-<app-carousel-form [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-carousel-form>
+<app-carousel-form *ngIf="isFormEnabled" [submittedItems]="items" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-carousel-form>

@@ -1,0 +1,38 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Website Builder</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Options</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <app-main-settings
+                [Holdersettings]="settings" 
+    (updateSettigns)="updateSettings($event)">
+  </app-main-settings>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="" [style.background-image]="'url(' + settings.BackgroundImgUrl + ')'" [style.background-size]="'cover'"
+    [style.background-position]="'center'">
+
+    <div class="m-auto p-5" style="border-radius: 50px;" [style.width.%]="settings.Width" [style.background]="settings.backgroundColor">
+        <app-main-description [isFormEnabled]="settings.isFormEnabled" />
+        <hr>
+        <app-tabs [isFormEnabled]="settings.isFormEnabled" />
+        <hr>
+        <app-carousel [isFormEnabled]="settings.isFormEnabled" />
+        <hr>
+        <app-card [isFormEnabled]="settings.isFormEnabled" />
+        <hr>
+    </div>
+
+</div>

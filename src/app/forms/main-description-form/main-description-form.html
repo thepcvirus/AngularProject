@@ -1,0 +1,33 @@
+<form (ngSubmit)="submitForm()" class="p-3 border rounded">
+  <div class="mb-3">
+    <label class="form-label">Header</label>
+    <input type="text" class="form-control" 
+           [(ngModel)]="Item.Header" name="header" required>
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea class="form-control" 
+              [(ngModel)]="Item.Description" name="description"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Image Url</label>
+    <input type="text" class="form-control" 
+           [(ngModel)]="Item.ImageUrl" name="imageUrl" required>
+  </div> 
+
+  <div class="mb-3">
+    <label class="form-label">Url Link</label>
+    <input type="text" class="form-control" 
+           [(ngModel)]="Item.UrlLink" name="urlLink" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">URL Text</label>
+    <input type="text" class="form-control" 
+           [(ngModel)]="Item.UrlText" name="urlText" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit Changes</button>
+</form>
