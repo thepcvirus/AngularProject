@@ -1,3 +1,4 @@
+<h2>Card Form</h2>
 <form (ngSubmit)="submitForm()" class="p-3 border rounded">
   <div class="mb-3">
     <label class="form-label">Image URL</label>
@@ -21,6 +22,11 @@
   
   <button type="submit" class="btn btn-primary">Add Slide</button>
 </form>
+
+<div class="container row justify-content-around">
+    <button type="submit" class="btn btn-danger col-4" (click)="saveFormData()">Save Settings</button>
+    <button type="submit" class="btn btn-success col-4" (click)="loadFormData()">Load Settings</button>
+  </div>
 
 <div *ngIf="submittedItems.length > 0" class="mt-4">
   <h3>Submitted Items</h3>

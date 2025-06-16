@@ -27,4 +27,16 @@ export class MainDescriptionForm {
       console.log('Form submitted:', this.Item);
     }
   }
+
+  saveFormData() {
+    localStorage.setItem('MainDescriptionData', JSON.stringify(this.Item));
+    alert('Data saved!');
+  }
+
+  loadFormData() {
+    const savedData = localStorage.getItem('MainDescriptionData');
+    if (savedData) {
+      this.Item = JSON.parse(savedData);
+    }
+  }
 }

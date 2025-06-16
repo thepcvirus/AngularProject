@@ -38,4 +38,16 @@ export class TabsForm {
   removeItem(index: number) {
     this.RemoveItem.emit(index);
   }
+
+  saveFormData() {
+    localStorage.setItem('TabsData', JSON.stringify(this.submittedItems));
+    alert('Data saved!');
+  }
+
+  loadFormData() {
+    const savedData = localStorage.getItem('TabsData');
+    if (savedData) {
+      this.submittedItems = JSON.parse(savedData);
+    }
+  }
 }

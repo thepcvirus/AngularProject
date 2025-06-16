@@ -7,14 +7,12 @@
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Options</h3>
+                <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Settings</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <app-main-settings
-                [Holdersettings]="settings" 
-    (updateSettigns)="updateSettings($event)">
-  </app-main-settings>
+                <app-main-settings [Holdersettings]="settings" (updateSettigns)="updateSettings($event)">
+                </app-main-settings>
             </div>
         </div>
     </div>
@@ -24,7 +22,8 @@
 <div class="" [style.background-image]="'url(' + settings.BackgroundImgUrl + ')'" [style.background-size]="'cover'"
     [style.background-position]="'center'">
 
-    <div class="m-auto p-5" style="border-radius: 50px;" [style.width.%]="settings.Width" [style.background]="settings.backgroundColor">
+    <div class="m-auto p-5"  [style.width.%]="settings.Width"
+        [style.background]="settings.backgroundColor">
         <app-main-description [isFormEnabled]="settings.isFormEnabled" />
         <hr>
         <app-tabs [isFormEnabled]="settings.isFormEnabled" />

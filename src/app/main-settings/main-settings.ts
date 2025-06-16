@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-main-settings',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './main-settings.html',
   styleUrls: ['./main-settings.css']
 })
@@ -24,5 +24,17 @@ export class MainSettings {
 
   onSubmit() {
     this.updateSettigns.emit(this.Holdersettings);
+  }
+
+  saveFormData() {
+    localStorage.setItem('formData', JSON.stringify(this.Holdersettings));
+    alert('Data saved!');
+  }
+
+  loadFormData() {
+    const savedData = localStorage.getItem('formData');
+    if (savedData) {
+      this.Holdersettings = JSON.parse(savedData);
+    }
   }
 }

@@ -41,4 +41,16 @@ export class CarouselForm {
   removeItem(index: number) {
     this.RemoveItem.emit(index);
   }
+
+  saveFormData() {
+    localStorage.setItem('CarouselData', JSON.stringify(this.submittedItems));
+    alert('Data saved!');
+  }
+
+  loadFormData() {
+    const savedData = localStorage.getItem('CarouselData');
+    if (savedData) {
+      this.submittedItems = JSON.parse(savedData);
+    }
+  }
 }

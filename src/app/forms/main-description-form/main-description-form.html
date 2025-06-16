@@ -1,3 +1,5 @@
+<h2>Main Description Form</h2>
+
 <form (ngSubmit)="submitForm()" class="p-3 border rounded">
   <div class="mb-3">
     <label class="form-label">Header</label>
@@ -28,6 +30,11 @@
     <input type="text" class="form-control" 
            [(ngModel)]="Item.UrlText" name="urlText" required>
   </div>
+
+  <div class="container row justify-content-around">
+    <button type="submit" class="btn btn-danger col-4" (click)="saveFormData()">Save Settings</button>
+    <button type="submit" class="btn btn-success col-4" (click)="loadFormData()">Load Settings</button>
+  </div>
   
-  <button type="submit" class="btn btn-primary">Submit Changes</button>
+  <!-- <button type="submit" class="btn btn-primary">Submit Changes</button> -->
 </form>

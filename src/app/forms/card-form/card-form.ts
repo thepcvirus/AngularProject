@@ -45,4 +45,16 @@ export class CardForm {
   removeItem(index: number) {
     this.RemoveItem.emit(index);
   }
+
+  saveFormData() {
+    localStorage.setItem('CardData', JSON.stringify(this.submittedItems));
+    alert('Data saved!');
+  }
+
+  loadFormData() {
+    const savedData = localStorage.getItem('CardData');
+    if (savedData) {
+      this.submittedItems = JSON.parse(savedData);
+    }
+  }
 }

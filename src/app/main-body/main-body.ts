@@ -34,4 +34,5 @@ export class MainBody {
   updateSettings(newSettings: ISettings){
     this.settings = newSettings;
   }
+
 }
