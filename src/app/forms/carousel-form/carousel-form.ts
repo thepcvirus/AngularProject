@@ -14,6 +14,7 @@ import { CarouselItem } from '../../componenets/carousel/carousel';
 export class CarouselForm {
   @Output() AddItem = new EventEmitter<CarouselItem>();
   @Output() RemoveItem = new EventEmitter<number>();
+  @Output() UpdateList = new EventEmitter<CarouselItem[]>();
   
   @Input() submittedItems: CarouselItem[] = [];
   newItem: CarouselItem = {
@@ -24,8 +25,10 @@ export class CarouselForm {
 
   submitForm() {
     if (this.newItem.imageUrl && this.newItem.title) {
-      this.AddItem.emit({...this.newItem});
+      //this.AddItem.emit({...this.newItem});
       //this.submittedItems.push({...this.newItem});
+      this.submittedItems.push(this.newItem);
+      this.UpdateList.emit(this.submittedItems);
       this.resetForm();
     }
   }
@@ -39,11 +42,14 @@ export class CarouselForm {
   }
 
   removeItem(index: number) {
-    this.RemoveItem.emit(index);
+    //this.RemoveItem.emit(index);
+    this.submittedItems.splice(index, 1);
+    this.UpdateList.emit(this.submittedItems);
   }
 
   saveFormData() {
     localStorage.setItem('CarouselData', JSON.stringify(this.submittedItems));
+    this.UpdateList.emit(this.submittedItems);
     alert('Data saved!');
   }
 
@@ -51,6 +57,7 @@ export class CarouselForm {
     const savedData = localStorage.getItem('CarouselData');
     if (savedData) {
       this.submittedItems = JSON.parse(savedData);
+      this.UpdateList.emit(this.submittedItems);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, output } from '@angular/core';
 
 export interface TabItem {
   title: string;
@@ -13,6 +13,7 @@ export interface TabItem {
 })
 export class Tabs {
 @Input() isFormEnabled: boolean = true;
+@Output() 
 activeIndex: number = 0;
   items: TabItem[] = [
     {

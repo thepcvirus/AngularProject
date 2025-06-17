@@ -36,6 +36,11 @@ export class Carousel implements OnInit, OnDestroy {
   ngOnInit(): void {
   } 
 
+  UpdateList(newitems: CarouselItem[]){
+    this.items = newitems;
+    this.ChangeImage(0);
+  }
+
   AddSlide(newItem: CarouselItem){
     this.items.push(newItem);
     this.ChangeImage(0);

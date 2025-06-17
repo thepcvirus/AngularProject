@@ -1,31 +1,27 @@
 <div class="container">
-  <h1>AI Article Generator</h1>
-  
-  <form (ngSubmit)="onSubmit()" #aiForm="ngForm">
-    <div class="form-group">
-      <label for="topic">Enter a topic for your article:</label>
-      <textarea 
-        id="topic" 
-        name="topic" 
-        [(ngModel)]="topic" 
-        class="form-control" 
-        placeholder="E.g., 'Quantum Computing' or 'Renewable Energy'" 
-        required
-      ></textarea>
-    </div>
-    
-    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
-      {{ isLoading ? 'Generating...' : 'Generate Article' }}
-    </button>
-  </form>
-
-  <div *ngIf="isLoading" class="loading">
-    <div class="spinner"></div>
-    <p>Generating your article...</p>
+  <div class="header">
+    <h1>🤖 AI Article Generator</h1>
+    <p>Powered by Google Gemini - Create comprehensive articles on any topic</p>
   </div>
 
-  <div *ngIf="showResponse" class="ai-response">
-    <h2>Your Generated Article</h2>
-    <div class="response-content" [innerHTML]="aiResponse"></div>
+  <div class="form-section justify-content-center " >
+    <form id="aiForm" class="p-3 border rounded">
+      <div class="mb-3 ">
+        <label class="" for="topic">What topic would you like an article about?</label>
+        <input class="form-control" [(ngModel)]="topic" name="topic" type="text" id="topic" placeholder="e.g., Artificial Intelligence, Climate Change, Space Exploration..."
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-dark form-control" id="submitBtn">
+        <span (click)="onSubmit()" id="buttonText">Generate Article</span>
+      </button>
+      
+    </form>
+    <div *ngIf="isLoading">Loading response...</div>
+    <div *ngIf="showResponse && !isLoading">
+      <p class="mb-3 form-control">
+        {{aiResponse}}
+      </p>
+    </div>
   </div>
 </div>

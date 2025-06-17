@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit ,AfterContentInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ISettings } from '../main-body/main-body';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './main-settings.html',
   styleUrls: ['./main-settings.css']
 })
-export class MainSettings {
+export class MainSettings implements  OnInit,AfterContentInit{
+
   @Output() updateSettigns = new EventEmitter<ISettings>();
   // Local form values
   @Input() Holdersettings: ISettings = {
@@ -21,6 +22,15 @@ export class MainSettings {
     colorPalette: [
     ]
   };
+
+  ngOnInit(): void {
+    this.loadFormData();
+  }
+
+    ngAfterContentInit(): void {
+    this.loadFormData();
+  }
+
 
   onSubmit() {
     this.updateSettigns.emit(this.Holdersettings);
