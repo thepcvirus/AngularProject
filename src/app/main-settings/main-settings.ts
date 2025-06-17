@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, OnInit ,AfterContentInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, Output, OnInit ,AfterContentInit, signal, OnChanges, SimpleChanges } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
 import { ISettings } from '../main-body/main-body';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./main-settings.css']
 })
 export class MainSettings implements  OnInit,AfterContentInit{
-
   @Output() updateSettigns = new EventEmitter<ISettings>();
   // Local form values
   @Input() Holdersettings: ISettings = {
@@ -24,13 +23,16 @@ export class MainSettings implements  OnInit,AfterContentInit{
   };
 
   ngOnInit(): void {
-    this.loadFormData();
+    //this.loadFormData();
   }
 
     ngAfterContentInit(): void {
-    this.loadFormData();
+    //this.loadFormData();
   }
 
+    refreshNavBar(){
+    this.Holdersettings.Width = this.Holdersettings.Width;
+  }
 
   onSubmit() {
     this.updateSettigns.emit(this.Holdersettings);
@@ -38,6 +40,7 @@ export class MainSettings implements  OnInit,AfterContentInit{
 
   saveFormData() {
     localStorage.setItem('formData', JSON.stringify(this.Holdersettings));
+    //this.loadFormData();
     alert('Data saved!');
   }
 
@@ -45,6 +48,7 @@ export class MainSettings implements  OnInit,AfterContentInit{
     const savedData = localStorage.getItem('formData');
     if (savedData) {
       this.Holdersettings = JSON.parse(savedData);
+
     }
   }
 }

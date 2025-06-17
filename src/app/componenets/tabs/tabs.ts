@@ -30,6 +30,10 @@ activeIndex: number = 0;
     }
   ];
 
+UpdateList(newitems: TabItem[]){
+    this.items = newitems;
+  }
+  
   AddSlide(newItem: TabItem){
       this.items.push(newItem);
       this.ChangeTab(0);

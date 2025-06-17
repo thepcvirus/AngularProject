@@ -16,7 +16,7 @@ import { CardItem } from '../../componenets/card/card';
 export class CardForm {
   @Output() AddItem = new EventEmitter<CardItem>();
   @Output() RemoveItem = new EventEmitter<number>();
-  
+    @Output() UpdateList = new EventEmitter<CardItem[]>();
   @Input() submittedItems: CardItem[] = [];
   newItem: CardItem = {
     imageUrl: '',
@@ -27,8 +27,8 @@ export class CardForm {
 
   submitForm() {
     if (this.newItem.imageUrl && this.newItem.title) {
-      this.AddItem.emit({...this.newItem});
-      //this.submittedItems.push({...this.newItem});
+      this.submittedItems.push(this.newItem);
+      this.UpdateList.emit(this.submittedItems);
       this.resetForm();
     }
   }
@@ -43,10 +43,12 @@ export class CardForm {
   }
 
   removeItem(index: number) {
-    this.RemoveItem.emit(index);
+    this.submittedItems.splice(index, 1);
+    this.UpdateList.emit(this.submittedItems);
   }
 
   saveFormData() {
+    this.UpdateList.emit(this.submittedItems);
     localStorage.setItem('CardData', JSON.stringify(this.submittedItems));
     alert('Data saved!');
   }
@@ -55,6 +57,7 @@ export class CardForm {
     const savedData = localStorage.getItem('CardData');
     if (savedData) {
       this.submittedItems = JSON.parse(savedData);
+      this.UpdateList.emit(this.submittedItems);
     }
   }
 }

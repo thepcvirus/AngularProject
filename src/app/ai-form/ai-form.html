@@ -12,7 +12,7 @@
           required>
       </div>
 
-      <button type="submit" class="btn btn-dark form-control" id="submitBtn">
+      <button type="submit" class="btn btn-dark form-control" id="submitBtn" [disabled]="isLoading">
         <span (click)="onSubmit()" id="buttonText">Generate Article</span>
       </button>
       

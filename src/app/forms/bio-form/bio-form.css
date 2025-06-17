@@ -1,0 +1,55 @@
+/* Custom Form Styles */
+.ai-form-container {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+#aiForm {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6 !important;
+}
+
+.form-control {
+    transition: all 0.3s ease;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.button-group .btn {
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.button-group .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.settings-group .btn {
+    border-width: 2px;
+}
+
+.ai-response {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    border-left: 4px solid #0d6efd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .settings-group {
+        flex-direction: column;
+    }
+    
+    .settings-group .btn {
+        width: 100% !important;
+    }
+}

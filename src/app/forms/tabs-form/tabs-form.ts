@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TabItem } from '../../componenets/tabs/tabs';
+import { TabItem, Tabs } from '../../componenets/tabs/tabs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -13,19 +13,20 @@ import { FormsModule } from '@angular/forms';
 export class TabsForm {
   @Output() AddItem = new EventEmitter<TabItem>();
   @Output() RemoveItem = new EventEmitter<number>();
+  @Output() UpdateList = new EventEmitter<TabItem[]>();
   
   @Input() submittedItems: TabItem[] = [];
-  itemsArray = [...this.submittedItems]
   newItem: TabItem = {
     title: '',
     description: ''
   };
 
   submitForm() {
-    this.itemsArray=[...this.itemsArray]
     if (this.newItem.description && this.newItem.title) {
-      this.AddItem.emit({...this.newItem});
+      //this.AddItem.emit({...this.newItem});
       //this.submittedItems.push({...this.newItem});
+      this.submittedItems.push(this.newItem);
+      this.UpdateList.emit(this.submittedItems);
       this.resetForm();
     }
   }
@@ -38,10 +39,13 @@ export class TabsForm {
   }
 
   removeItem(index: number) {
-    this.RemoveItem.emit(index);
+    //this.RemoveItem.emit(index);
+    this.submittedItems.splice(index, 1);
+    this.UpdateList.emit(this.submittedItems);
   }
 
   saveFormData() {
+    this.UpdateList.emit(this.submittedItems);
     localStorage.setItem('TabsData', JSON.stringify(this.submittedItems));
     alert('Data saved!');
   }
@@ -51,6 +55,7 @@ export class TabsForm {
     const savedData = localStorage.getItem('TabsData');
     if (savedData) {
       this.submittedItems = JSON.parse(savedData);
+      this.UpdateList.emit(this.submittedItems);
     }
     
   }

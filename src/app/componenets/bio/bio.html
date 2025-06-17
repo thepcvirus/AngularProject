@@ -1,0 +1,5 @@
+<div class="bg-body p-2">
+    <p>{{BioData}}</p>
+</div>
+
+<app-bio-form *ngIf="isFormEnabled" (UpdateMain)="updateData($event)"></app-bio-form>

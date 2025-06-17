@@ -1,0 +1,61 @@
+<div class="container ai-form-container">
+    <div class="form-section justify-content-center">
+        <form id="aiForm" class="p-4 border rounded shadow-sm bg-light">
+
+            <div class="mb-4">
+                <label class="form-label h5 text-primary mb-3" for="topic">Optimize Your Personal Description with AI</label>
+                <textarea class="form-control p-3" [(ngModel)]="topic" name="topic" id="topic"
+                    placeholder="e.g., Artificial Intelligence, Climate Change, Space Exploration..." 
+                    rows="5" required></textarea>
+            </div>
+
+            <div class="button-group d-flex justify-content-between gap-3 mb-4 p-3 bg-white rounded">
+                <button type="button" class="btn btn-primary flex-grow-1 py-2" (click)="onSubmit()" 
+                        id="submitBtn">
+                    <i class="bi bi-send-fill me-2"></i>
+                    <span id="buttonText">Submit Article</span>
+                </button>
+
+                <button type="button" class="btn btn-success flex-grow-1 py-2" (click)="optimize()" 
+                        id="generateBtn" [disabled]="isLoading">
+                    <i class="bi bi-magic me-2" [class.invisible]="isLoading"></i>
+                    <span id="buttonText">
+                        <span *ngIf="!isLoading">Generate Article</span>
+                        <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+                    </span>
+                </button>
+
+                <button type="button" class="btn btn-warning flex-grow-1 py-2 text-white" (click)="UseGenerated()" 
+                        id="useGeneratedBtn">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    <span id="buttonText">Use Generated</span>
+                </button>
+            </div>
+
+            <div class="settings-group d-flex justify-content-between gap-3 mt-4">
+                <button type="button" class="btn btn-outline-danger col-6 py-2" (click)="saveFormData()">
+                    <i class="bi bi-save me-2"></i>
+                    Save Settings
+                </button>
+                <button type="button" class="btn btn-outline-success col-6 py-2" (click)="loadFormData()">
+                    <i class="bi bi-folder-symlink me-2"></i>
+                    Load Settings
+                </button>
+            </div>
+        </form>
+
+        <div *ngIf="isLoading" class="mt-4 p-3 text-center text-muted">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Generating your content...</p>
+        </div>
+
+        <div *ngIf="showResponse && !isLoading" class="mt-4 p-4 border rounded bg-white">
+            <h5 class="text-success mb-3">Generated Content:</h5>
+            <div class="ai-response p-3 bg-light rounded">
+                {{aiResponse}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,7 +14,7 @@ export interface CarouselItem {
   templateUrl: './carousel.html',
   styleUrl: './carousel.css'
 })
-export class Carousel implements OnInit, OnDestroy {
+export class Carousel {
   @Input() isFormEnabled: boolean = true;
   activeIndex: number = 0;
   items: CarouselItem[] = [
@@ -29,12 +29,6 @@ export class Carousel implements OnInit, OnDestroy {
       description: 'Blue ocean water with waves crashing.'
     }
   ];
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
-  ngOnInit(): void {
-  } 
 
   UpdateList(newitems: CarouselItem[]){
     this.items = newitems;

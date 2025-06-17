@@ -48,8 +48,8 @@ export class CarouselForm {
   }
 
   saveFormData() {
-    localStorage.setItem('CarouselData', JSON.stringify(this.submittedItems));
     this.UpdateList.emit(this.submittedItems);
+    localStorage.setItem('CarouselData', JSON.stringify(this.submittedItems));
     alert('Data saved!');
   }
 

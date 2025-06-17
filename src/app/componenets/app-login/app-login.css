@@ -1,0 +1,33 @@
+/* Ensure the container takes full height */
+.container.h-100 {
+  min-height: 100vh;
+}
+
+/* Center the form within the column */
+.auth-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form elements */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-container .form-control {
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.auth-container .btn {
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.auth-container p {
+  font-size: 14px;
+}

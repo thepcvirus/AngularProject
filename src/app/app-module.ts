@@ -14,7 +14,20 @@ import { MainDescription } from './componenets/main-description/main-description
 import { MainDescriptionForm } from './forms/main-description-form/main-description-form';
 import { MainSettings } from './main-settings/main-settings';
 import { AiFormComponent } from './ai-form/ai-form';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { firebaseConfig } from '../environments/environment';
+import { LoginComponent } from './componenets/app-login/app-login';
+import { SignupComponent } from './componenets/app-signup/app-signup';
+import { ForgotPasswordComponent } from './componenets/forgot-password/forgot-password';
+import { LogoutComponent } from './componenets/logout.component/logout.component';
+import { AuthGuard } from './componenets/auth.guard/auth.guard';
+import { Dashboard } from './componenets/dashboard/dashboard';
+import { NavbarComponent } from './componenets/nav-bar/nav-bar';
+import { RouterLink, RouterModule } from '@angular/router';
+import { FormsModule, NgModel } from '@angular/forms';
+import { Bio } from './componenets/bio/bio';
+import { BioForm } from './forms/bio-form/bio-form';
 @NgModule({
   declarations: [
     App,
@@ -22,19 +35,36 @@ import { AiFormComponent } from './ai-form/ai-form';
     Card,
     Tabs,
     MainDescription,
-     MainBody,
+    MainBody,
+    Bio,
+    BioForm,
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     CarouselForm,
     CardForm,
     TabsForm,
     MainDescriptionForm,
-   MainSettings,
-   AiFormComponent
+    MainSettings,
+    AiFormComponent,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    LoginComponent,
+    SignupComponent,
+    ForgotPasswordComponent,
+    LogoutComponent,
+    NavbarComponent,
+    RouterLink,
+    RouterModule,
+    FormsModule
   ],
+  exports:[RouterModule,    
+],
   providers: [
+    AuthGuard,
+    Dashboard,
     provideBrowserGlobalErrorListeners()
   ],
   bootstrap: [App]

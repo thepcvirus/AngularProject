@@ -1,0 +1,45 @@
+<nav class="navbar bg-body-tertiary ">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/home">Website Builder</a>
+        <!-- Navigation Links -->
+        <div class="d-flex">
+
+
+            <!-- Existing Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="refreshNavBar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- Offcanvas Content (unchanged) -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="text-center">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" *ngIf="(auth.isuserLoggedIn | async)">
+                        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!(auth.isuserLoggedIn | async)">
+                        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!(auth.isuserLoggedIn | async)">
+                        <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+                    </li>
+                    <li class="nav-item" *ngIf="(auth.isuserLoggedIn | async)">
+                        <a class="nav-link" (click)="logout()" style="cursor: pointer">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="auth.isuserLoggedIn | async" class="offcanvas-header">
+                
+
+                <div class="offcanvas-body">
+                    <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Settings</h3>
+                
+                    <app-main-settings [Holdersettings]="settings" (updateSettigns)="updateSettings($event)">
+                    </app-main-settings>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

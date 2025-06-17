@@ -50,8 +50,6 @@ async main() {
   }
 }
 
-
-
   async onSubmit() {
     this.main();
   }

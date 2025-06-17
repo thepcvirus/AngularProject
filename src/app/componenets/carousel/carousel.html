@@ -1,24 +1,57 @@
-
-
-<div id="carouselExampleCaptions" class="carousel slide" *ngIf="items.length > 0">
-  <div class="carousel-inner">
-    <div *ngFor="let item of items; let i = index"
-         class="carousel-item" [class.active]="activeIndex === i" >
-      <img [src]="item.imageUrl" class="d-block w-100" [alt]="i">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>{{ item.title }}</h5>
-        <p>{{ item.description }}</p>
+<div class="carousel-container mb-5" *ngIf="items.length > 0">
+  <div id="enhancedCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button *ngFor="let item of items; let i = index" 
+              type="button" 
+              [attr.data-bs-target]="'#enhancedCarousel'"
+              [attr.data-bs-slide-to]="i" 
+              [class.active]="activeIndex === i"
+              (click)="activeIndex = i"
+              class="indicator-btn">
+      </button>
+    </div>
+    
+    <!-- Slides -->
+    <div class="carousel-inner rounded-3 overflow-hidden">
+      <div *ngFor="let item of items; let i = index"
+           class="carousel-item" 
+           [class.active]="activeIndex === i">
+        <div class="carousel-image-container">
+          <img [src]="item.imageUrl" class="d-block w-100" [alt]="item.title" loading="lazy">
+          <div class="image-overlay"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="caption-title">{{ item.title }}</h3>
+          <p class="caption-text">{{ item.description }}</p>
+          <a *ngIf="item.imageUrl" [href]="item.imageUrl" target="_blank" class="btn btn-outline-light mt-2">
+            Learn More <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
       </div>
     </div>
+    
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" (click)="ChangeImage(-1)">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" (click)="ChangeImage(1)">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <button class="carousel-control-prev" type="button" (click)="ChangeImage(-1)">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" (click)="ChangeImage(1)" >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+</div>
+
+<div class="d-flex justify-content-center gap-3 mb-4" *ngIf="isFormEnabled">
+  <button (click)="AddRandomSlide()" class="btn btn-primary px-4 py-2">
+    <i class="bi bi-shuffle me-2"></i>Add Random Slide
   </button>
 </div>
-<button *ngIf="isFormEnabled" (click)="AddRandomSlide()" class="btn btn-primary mb-3">Add Random Slide</button>
-<app-carousel-form *ngIf="isFormEnabled" [submittedItems]="items" (UpdateList)="UpdateList($event)" (AddItem)="AddSlide($event)" (RemoveItem)="RemoveSlide($event)"></app-carousel-form>
+
+<app-carousel-form *ngIf="isFormEnabled" 
+                  [submittedItems]="items" 
+                  (UpdateList)="UpdateList($event)" 
+                  (AddItem)="AddSlide($event)" 
+                  (RemoveItem)="RemoveSlide($event)">
+</app-carousel-form>
