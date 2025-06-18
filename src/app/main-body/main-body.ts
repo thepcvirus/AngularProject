@@ -20,31 +20,12 @@ export interface ISettings {
   templateUrl: './main-body.html',
   styleUrl: './main-body.css'
 })
+// main-body.ts
 export class MainBody implements OnInit {
   private navService = inject(NavService);
-  @Input() settings: ISettings = {
-    isFormEnabled: true,
-    BackgroundImgUrl: "https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    Width: 50,
-    backgroundColor: '#ffffff',
-    colorPalette: [
-      '#ffffff', // Nice blue
-      '#3498db', // Nice blue
-      '#2ecc71', // Emerald
-      '#e74c3c', // Alizarin
-      '#f1c40f', // Sunflower
-      '#dddddd'
-    ]
-  };
-
-  constructor(public auth: AuthService, private router: Router) {}
+  settings: ISettings = this.navService.getCurrentSettings();
 
   ngOnInit() {
-    // Proper authentication check with subscription
-    if(!this.auth.isuserLoggedIn){
-      this.router.navigate(['/login']);
-    }
-
     this.navService.settings$.subscribe(newSettings => {
       this.settings = newSettings;
     });

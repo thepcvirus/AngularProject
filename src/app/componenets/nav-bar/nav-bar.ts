@@ -15,35 +15,41 @@ import { NavService } from '../../nav-service';
   templateUrl: './nav-bar.html',
   styleUrls: ['./nav-bar.css']
 })
-export class NavbarComponent  {
-  constructor(public auth: AuthService, private router: Router, private navService:NavService)  { }
-  logout() {
-    this.auth.logout()
-      .then(() => this.router.navigate(['/login']))
-      .catch(error => console.error('Logout error:', error));
+export class NavbarComponent implements OnInit  {
+settings: ISettings;
+
+  constructor(
+    public auth: AuthService, 
+    private router: Router,
+    private navService: NavService
+  ) {
+    // Initialize in constructor
+    this.settings = this.navService.getCurrentSettings();
   }
+
+
+
+
+  logout() {
+  this.auth.logout()
+    .then(() => {
+      // Navigation is already handled in AuthService
+    })
+    .catch(error => {
+      console.error('Logout error:', error);
+      // Optionally show error message to user
+    });
+}
 
   refreshNavBar(){
     
   }
 
-  @Input() settings: ISettings = {
-    isFormEnabled: true,
-    BackgroundImgUrl: "https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    Width: 50,
-    backgroundColor: '#ffffff',
-    colorPalette: [
-      '#ffffff', // Nice blue
-      '#3498db', // Nice blue
-      '#2ecc71', // Emerald
-      '#e74c3c', // Alizarin
-      '#f1c40f', // Sunflower
-      '#dddddd'
-    ]
-  };
+  ngOnInit() {
+    this.settings = this.navService.getCurrentSettings();
+  }
 
   updateSettings(newSettings: ISettings) {
-    this.settings = newSettings;
-    this.navService.updateSettings(this.settings)
+    this.navService.updateSettings(newSettings);
   }
 }

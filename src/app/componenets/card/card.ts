@@ -34,12 +34,6 @@ export class Card {
     UpdateList(newitems: CardItem[]){
         this.items = newitems;
       }
-
-    ngOnDestroy(): void {
-      throw new Error('Method not implemented.');
-    }
-    ngOnInit(): void {
-    } 
   
     AddSlide(newItem: CardItem){
       this.items.push(newItem);

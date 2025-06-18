@@ -1,40 +1,53 @@
-<h2>Main Description Form</h2>
-
-<form (ngSubmit)="submitForm()" class="p-3 border rounded">
-  <div class="mb-3">
-    <label class="form-label">Header</label>
-    <input type="text" class="form-control" 
-           [(ngModel)]="Item.Header" name="header" required>
-  </div>
+<div class="main-description-form-container">
+  <h2 class="form-title">
+    <i class="bi bi-card-heading"></i> Main Description Form
+  </h2>
   
-  <div class="mb-3">
-    <label class="form-label">Description</label>
-    <textarea class="form-control" 
-              [(ngModel)]="Item.Description" name="description"></textarea>
-  </div>
+  <form (ngSubmit)="submitForm()" class="description-form">
+    <div class="form-group">
+      <label class="form-label">Header</label>
+      <input type="text" class="form-input" 
+             [(ngModel)]="Item.Header" name="header" required
+             placeholder="Enter section header">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" 
+                [(ngModel)]="Item.Description" name="description"
+                rows="4"
+                placeholder="Enter detailed description"></textarea>
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Image Url</label>
-    <input type="text" class="form-control" 
-           [(ngModel)]="Item.ImageUrl" name="imageUrl" required>
-  </div> 
+    <div class="form-group">
+      <label class="form-label">Image URL</label>
+      <input type="url" class="form-input" 
+             [(ngModel)]="Item.ImageUrl" name="imageUrl" required
+             placeholder="https://example.com/image.jpg">
+      <div class="form-hint">Enter a valid image URL</div>
+    </div> 
 
-  <div class="mb-3">
-    <label class="form-label">Url Link</label>
-    <input type="text" class="form-control" 
-           [(ngModel)]="Item.UrlLink" name="urlLink" required>
-  </div>
+    <div class="form-group">
+      <label class="form-label">Link URL</label>
+      <input type="url" class="form-input" 
+             [(ngModel)]="Item.UrlLink" name="urlLink" required
+             placeholder="https://example.com">
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">URL Text</label>
-    <input type="text" class="form-control" 
-           [(ngModel)]="Item.UrlText" name="urlText" required>
-  </div>
+    <div class="form-group">
+      <label class="form-label">Link Text</label>
+      <input type="text" class="form-input" 
+             [(ngModel)]="Item.UrlText" name="urlText" required
+             placeholder="e.g. Learn More">
+    </div>
 
-  <div class="container row justify-content-around">
-    <button type="submit" class="btn btn-danger col-4" (click)="saveFormData()">Save Settings</button>
-    <button type="submit" class="btn btn-success col-4" (click)="loadFormData()">Load Settings</button>
-  </div>
-  
-  <!-- <button type="submit" class="btn btn-primary">Submit Changes</button> -->
-</form>
+    <div class="form-actions">
+      <button type="button" class="btn-save" (click)="saveFormData()">
+        <i class="bi bi-save"></i> Save Settings
+      </button>
+      <button type="button" class="btn-load" (click)="loadFormData()">
+        <i class="bi bi-folder"></i> Load Settings
+      </button>
+    </div>
+  </form>
+</div>

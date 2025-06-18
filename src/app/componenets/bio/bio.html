@@ -1,5 +1,9 @@
-<div class="bg-body p-2">
-    <p>{{BioData}}</p>
+<div class="user-bio-container" *ngIf="BioData">
+  <div class="user-bio-content">
+    <div class="bio-text">
+      <p>{{BioData}}</p>
+    </div>
+  </div>
 </div>
 
 <app-bio-form *ngIf="isFormEnabled" (UpdateMain)="updateData($event)"></app-bio-form>

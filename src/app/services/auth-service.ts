@@ -46,10 +46,13 @@ export class AuthService {
   }
 
   // Logout
-  logout() {
-    return this.afAuth.signOut()
-      .then(() => this.router.navigate(['/login']));
-  }
+  logout(): Promise<void> {
+  return this.afAuth.signOut()
+    .then(() => {
+      this.router.navigate(['/login']); // Redirect to login page
+      this.isuserLoggedIn.next(false); // Update authentication state
+    });
+}
 
   // Check if user is logged in
   isLoggedIn() {

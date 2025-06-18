@@ -1,21 +1,25 @@
-<div class="" [style.background-image]="'url(' + settings.BackgroundImgUrl + ')'" [style.background-size]="'cover'"
-    [style.background-position]="'center'">
+<div class="main-body-container" 
+     [style.background-image]="settings?.BackgroundImgUrl ? 'url(' + settings.BackgroundImgUrl + ')' : 'none'"
+     [style.background-size]="'cover'"
+     [style.background-position]="'center'">
 
-    <div class="m-auto p-5 "  [style.width.%]="settings.Width"
-        [style.background]="settings.backgroundColor">
+    <div class="content-container"
+         [style.width.%]="settings.Width"
+         [style.background-color]="settings.backgroundColor"
+         class="m-auto p-5">
 
         <app-bio class="p-2" [isFormEnabled]="settings.isFormEnabled"></app-bio>
 
         <app-ai-form class="p-2" *ngIf="settings.isFormEnabled"></app-ai-form>
-        
+
         <app-main-description class="p-2" [isFormEnabled]="settings.isFormEnabled" />
-        
+
         <app-tabs class="p-2" [isFormEnabled]="settings.isFormEnabled" />
-        
+
         <app-carousel class="p-2" [isFormEnabled]="settings.isFormEnabled" />
-        
+
         <app-card class="p-2" [isFormEnabled]="settings.isFormEnabled" />
-        
+
     </div>
 
 </div>

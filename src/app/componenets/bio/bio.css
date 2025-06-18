@@ -1,0 +1,76 @@
+/* User Bio Container */
+.user-bio-container {
+  width: 100%;
+  background: linear-gradient(to right, #f8f9fa, #ffffff);
+  border-bottom: 1px solid #e9ecef;
+  padding: 1.5rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.user-bio-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+.bio-text p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #495057;
+  font-style: italic;
+}
+
+.bio-actions {
+  flex-shrink: 0;
+}
+
+.edit-btn {
+  background-color: transparent;
+  border: 1px solid #0d6efd;
+  color: #0d6efd;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edit-btn:hover {
+  background-color: #0d6efd;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.edit-btn i {
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .user-bio-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+  
+  .bio-actions {
+    align-self: flex-end;
+  }
+  
+  .bio-text p {
+    font-size: 1rem;
+  }
+}

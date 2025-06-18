@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, OnInit ,AfterContentInit, signa
 import { FormsModule, NgModel } from '@angular/forms';
 import { ISettings } from '../main-body/main-body';
 import { CommonModule } from '@angular/common';
+import { NavService } from '../nav-service';
 
 @Component({
   selector: 'app-main-settings',
@@ -10,37 +11,27 @@ import { CommonModule } from '@angular/common';
   templateUrl: './main-settings.html',
   styleUrls: ['./main-settings.css']
 })
-export class MainSettings implements  OnInit,AfterContentInit{
+// main-settings.ts
+export class MainSettings implements OnInit {
   @Output() updateSettigns = new EventEmitter<ISettings>();
-  // Local form values
-  @Input() Holdersettings: ISettings = {
-    isFormEnabled: true,
-    BackgroundImgUrl: "",
-    Width: 0,
-    backgroundColor: '',
-    colorPalette: [
-    ]
-  };
+  Holdersettings!: ISettings; // Add definite assignment assertion
+
+  constructor(private navService: NavService) {}
 
   ngOnInit(): void {
-    //this.loadFormData();
+    this.Holdersettings = {...this.navService.getCurrentSettings()};
   }
 
-    ngAfterContentInit(): void {
-    //this.loadFormData();
+  onSettingChange() {
+  if (this.Holdersettings) {
+    this.updateSettigns.emit({...this.Holdersettings});
+    this.navService.updateSettings({...this.Holdersettings});
   }
-
-    refreshNavBar(){
-    this.Holdersettings.Width = this.Holdersettings.Width;
-  }
-
-  onSubmit() {
-    this.updateSettigns.emit(this.Holdersettings);
-  }
+}
 
   saveFormData() {
     localStorage.setItem('formData', JSON.stringify(this.Holdersettings));
-    //this.loadFormData();
+    this.onSettingChange(); // Emit changes after save
     alert('Data saved!');
   }
 
@@ -48,7 +39,7 @@ export class MainSettings implements  OnInit,AfterContentInit{
     const savedData = localStorage.getItem('formData');
     if (savedData) {
       this.Holdersettings = JSON.parse(savedData);
-
+      this.onSettingChange(); // Emit changes after load
     }
   }
 }

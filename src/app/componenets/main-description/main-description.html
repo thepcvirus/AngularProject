@@ -1,13 +1,34 @@
-
-
-<div class="row g-0 bg-body-secondary position-relative" *ngIf="mainDesc.Header != ''">
-  <div class="col-md-6 mb-md-0 p-md-4">
-    <img [src]="mainDesc.ImageUrl" class="w-100" alt="...">
-  </div>
-  <div class="col-md-6 p-4 ps-md-0">
-    <h5 class="mt-0">{{mainDesc.Header}}</h5>
-    <p>{{mainDesc.Description}}</p>
-    <a target="_blank" href="{{mainDesc.UrlLink}}" class="stretched-link">{{mainDesc.UrlText}}</a>
+<div class="featured-card" *ngIf="mainDesc.Header != ''">
+  <div class="card-wrapper">
+    <!-- Image Section -->
+    <div class="image-section">
+      <div class="image-container">
+        <img [src]="mainDesc.ImageUrl" 
+             class="featured-image" 
+             [alt]="mainDesc.Header"
+             onerror="this.src='https://via.placeholder.com/800x500?text=Image+Not+Available'">
+        <div class="image-overlay"></div>
+      </div>
+    </div>
+    
+    <!-- Content Section -->
+    <div class="content-section">
+      <div class="content-wrapper">
+        <div class="header-section">
+          <span class="featured-badge">Featured</span>
+          <h2 class="featured-title">{{mainDesc.Header}}</h2>
+        </div>
+        <p class="featured-description">{{mainDesc.Description}}</p>
+        <a target="_blank" 
+           href="{{mainDesc.UrlLink}}" 
+           class="featured-link stretched-link">
+          <span>{{mainDesc.UrlText || 'Learn More'}}</span>
+          <svg class="link-icon" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
